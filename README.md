@@ -37,7 +37,8 @@ cd elimuhub-gemini-web
 Create a `.env` file in the `backend/` directory:
 
 ```
-AIzaSyAJ9IZISJx8N4boPosoT-MKvvxXA5RLVgI=your_actual_gemini_api_key=https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent
+GEMINI_API_KEY=your_actual_gemini_api_key
+GEMINI_API_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent
 ```
 
 ### 3. Run the Backend

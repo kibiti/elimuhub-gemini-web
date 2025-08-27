@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 const GEMINI_API_URL = process.env.GEMINI_API_URL || "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
-const AIzaSyAJ9IZISJx8N4boPosoT-MKvvxXA5RLVgI = process.env.GEMINI_API_KEY || "AIzaSyAJ9IZISJx8N4boPosoT-MKvvxXA5RLVgI";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "YOUR_GEMINI_API_KEY";
 
 app.post('/api/gemini', async (req, res) => {
   const prompt = req.body.prompt || "";
@@ -19,7 +19,7 @@ app.post('/api/gemini', async (req, res) => {
       ]
     };
     const geminiRes = await axios.post(
-      `${GEMINI_API_URL}?key=${AIzaSyAJ9IZISJx8N4boPosoT-MKvvxXA5RLVgI}`,
+      `${GEMINI_API_URL}?key=${GEMINI_API_KEY}`,
       payload,
       {
         headers: {

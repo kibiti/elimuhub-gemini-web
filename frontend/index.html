@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Elimuhub Gemini Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        textarea { width: 100%; }
+        #response { margin-top: 1em; font-weight: bold; }
+        .logo { font-size: 2em; margin-bottom: 0.5em; color: #0077cc; }
+    </style>
+</head>
+<body>
+    <div class="logo">Elimuhub + Gemini</div>
+    <form id="geminiForm">
+        <label for="prompt">Ask Gemini:</label><br>
+        <textarea id="prompt" name="prompt" rows="4"></textarea><br>
+        <button type="submit">Send</button>
+    </form>
+    <div id="response"></div>
+    <script>
+        document.getElementById('geminiForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const prompt = document.getElementById('prompt').value;
+            document.getElementById('response').innerText = "Loading...";
+            const res = await fetch('http://localhost:5000/api/gemini', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({prompt})
+            });
+            const data = await res.json();
+            document.getElementById('response').innerText = data.response;
+        }
+    </script>
+</body>
+</html>
